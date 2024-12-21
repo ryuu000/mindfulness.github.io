@@ -3,72 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mindfulness Community</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-        }
-        main {
-            padding: 2em;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        .social-links {
-            margin-top: 1em;
-        }
-        .social-links a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #4CAF50;
-        }
-    </style>
+    <title>Mindfulness & Wellness Community</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to the Mindfulness Community</h1>
+        <h1>Mindfulness & Wellness Community</h1>
     </header>
     <main>
-        <p>Join us in our journey towards mindfulness and inner peace. Connect with like-minded individuals and share your experiences.</p>
-        <div class="social-links">
-            <a href="https://facebook.com" target="_blank">Facebook</a>
-            <a href="https://twitter.com" target="_blank">Twitter</a>
-            <a href="https://instagram.com" target="_blank">Instagram</a>
-        </div>
+        <section class="subscribe">
+            <h2>Subscribe to Our Newsletter</h2>
+            <form id="subscribe-form">
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+        <section class="social-media">
+            <h2>Follow Us</h2>
+            <div class="social-buttons">
+                <a href="#" class="social-button">Facebook</a>
+                <a href="#" class="social-button">Twitter</a>
+                <a href="#" class="social-button">Instagram</a>
+            </div>
+        </section>
     </main>
     <footer>
-        <p>© 2024 Mindfulness Community | Powered by GitHub</p>
+        <p>Powered by GitHub</p>
     </footer>
-    <script>
-        // Example JavaScript to enhance user experience
-        document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('.social-links a');
-            links.forEach(link => {
-                link.addEventListener('mouseover', function() {
-                    this.style.color = '#333';
-                });
-                link.addEventListener('mouseout', function() {
-                    this.style.color = '#4CAF50';
-                });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
 
