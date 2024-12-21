@@ -1,73 +1,64 @@
 body {
+    background-color: #E3F6E5; /* Light green */
+    color: #405D27; /* Dark green */
     font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
 }
 
 header {
-    margin-bottom: 20px;
+    background-color: #B7E4C7; /* Fresh green */
+    padding: 20px;
+    text-align: center;
 }
 
-h1, h2 {
-    color: #00ffcc;
+h1 {
+    color: #405D27; /* Dark green */
+}
+
+h2 {
+    color: #809825; /* Olive drab */
 }
 
 .subscribe, .social-media {
-    margin: 20px 0;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #F8E9DC; /* Antique white */
+    border-radius: 10px;
 }
 
 input[type="email"] {
     padding: 10px;
-    margin-bottom: 10px;
-    border: none;
+    margin-right: 10px;
+    border: 1px solid #CFCACA; /* Chinese silver */
     border-radius: 5px;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #00ffcc;
+    background-color: #809825; /* Olive drab */
+    color: white;
     border: none;
     border-radius: 5px;
-    color: #000;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #00cc99;
+    background-color: #43691B; /* Dark moss green */
 }
 
-.social-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.social-button {
+.social-buttons a {
+    display: inline-block;
+    margin: 5px;
     padding: 10px 20px;
-    background-color: #00ffcc;
-    border: none;
-    border-radius: 5px;
-    color: #000;
+    background-color: #CEDFEE; /* Columbia blue */
+    color: #405D27; /* Dark green */
     text-decoration: none;
-    cursor: pointer;
-}
-
-.social-button:hover {
-    background-color: #00cc99;
+    border-radius: 5px;
 }
 
 footer {
-    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: #A3A2A9; /* Quick silver */
+    color: white;
 }
+
