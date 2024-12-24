@@ -1,5 +1,13 @@
-document.getElementById('subscribe-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const email = document.getElementById('email').value;
-    alert(`Thank you for subscribing with ${email}!`);
+// scripts.js
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('nav ul li a');
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('.active').classList.remove('active');
+            link.classList.add('active');
+            const target = link.getAttribute('href');
+            document.querySelector('main').innerHTML = `<object type="text/html" data="${target}" ></object>`;
+        });
+    });
 });
