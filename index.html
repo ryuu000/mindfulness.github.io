@@ -14,7 +14,7 @@
     <header>
         <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html" aria-current="page">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="testimonials.html">Testimonials</a></li>
                 <li><a href="blog.html">Blog</a></li>
@@ -24,7 +24,7 @@
         <div class="hero">
             <h1>Welcome to the Mindfulness Community</h1>
             <p>Join us in our journey towards mindfulness and inner peace. Connect with like-minded individuals and share your experiences.</p>
-            <button onclick="location.href='contact.html'">Get Started</button>
+            <button class="cta-button" onclick="location.href='contact.html'">Get Started</button>
         </div>
     </header>
     <main>
@@ -47,13 +47,13 @@
                 <input type="email" id="email" name="email" required>
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" required></textarea>
-                <button type="submit">Submit</button>
+                <button type="submit" class="submit-button">Submit</button>
             </form>
         </section>
-        <div class="social-links">
-            <a href="https://facebook.com" target="_blank">Facebook</a>
-            <a href="https://twitter.com" target="_blank">Twitter</a>
-            <a href="https://instagram.com" target="_blank">Instagram</a>
+        <div class="social-links" aria-label="Social Media Links">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter">Twitter</a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
         </div>
     </main>
     <footer>
@@ -67,9 +67,3 @@
     <script src="scripts.js"></script>
 </body>
 </html>
-
-
-
-
-
-
