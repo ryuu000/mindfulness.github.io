@@ -1,13 +1,16 @@
 // scripts.js
 document.addEventListener('DOMContentLoaded', () => {
-    const links = document.querySelectorAll('nav ul li a');
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // Example of adding a simple alert on button click
+    document.querySelector('.cta-button').addEventListener('click', () => {
+        alert('Thank you for your interest! Redirecting to the contact page...');
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector('.active').classList.remove('active');
-            link.classList.add('active');
-            const target = link.getAttribute('href');
-            document.querySelector('main').innerHTML = `<object type="text/html" data="${target}" ></object>`;
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
-});
