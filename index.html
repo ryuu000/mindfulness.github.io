@@ -32,6 +32,26 @@
             padding: 10px;
             cursor: pointer;
         }
+        .google-sign-in {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #4285F4;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .hivesigner-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #FF4500;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -55,11 +75,9 @@
     <aside id="sidebar" class="sidebar">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
         </ul>
+        <a href="#" class="google-sign-in">Sign in with Google</a>
+        <a href="#" class="hivesigner-button">Sign in with HiveSigner</a>
     </aside>
     <main>
         <section class="services">
@@ -71,18 +89,6 @@
             <h2>Testimonials</h2>
             <p>Read what our community members have to say.</p>
             <a href="testimonials.html" class="button">Read More</a>
-        </section>
-        <section class="contact-form">
-            <h2>Contact Us</h2>
-            <form action="submit_form.php" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit" class="submit-button">Submit</button>
-            </form>
         </section>
         <div class="social-links" aria-label="Social Media Links">
             <a href="https://facebook.com" target="_blank" aria-label="Facebook">Facebook</a>
