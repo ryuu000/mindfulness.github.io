@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dAPP</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 </head>
 <body>
     <header>
@@ -28,16 +29,39 @@
             </form>
             <p id="voteResult"></p>
             <script>
-                document.getElementById('voteForm').addEventListener('submit', function(event) {
+                let web3;
+                let contract;
+                const contractAddress = 'YOUR_SMART_CONTRACT_ADDRESS';
+                const abi = [
+                    // Your contract ABI here
+                ];
+
+                async function init() {
+                    if (window.ethereum) {
+                        web3 = new Web3(window.ethereum);
+                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        contract = new web3.eth.Contract(abi, contractAddress);
+                    } else {
+                        alert('Please install MetaMask!');
+                    }
+                }
+
+                document.getElementById('voteForm').addEventListener('submit', async function(event) {
                     event.preventDefault();
                     const selectedOption = document.querySelector('input[name="vote"]:checked').value;
-                    document.getElementById('voteResult').innerText = 'You voted for option ' + selectedOption;
+                    const accounts = await web3.eth.getAccounts();
+                    await contract.methods.vote(selectedOption).send({ from: accounts[0] });
+                    const voteCount1 = await contract.methods.getVotes(1).call();
+                    const voteCount2 = await contract.methods.getVotes(2).call();
+                    document.getElementById('voteResult').innerText = `You voted for option ${selectedOption}. Current votes - Option 1: ${voteCount1}, Option 2: ${voteCount2}`;
                 });
+
+                window.addEventListener('load', init);
             </script>
         </section>
         <section>
             <h2>About this dApp</h2>
-            <p>This is a sample voting dApp frontend. In future updates, this dApp will be expanded with smart contract integration, allowing for decentralized and transparent voting on the blockchain.</p>
+            <p>This is a sample voting dApp frontend. In future updates, this dApp will be expanded with smart contract integration, allowing for decentralized and transparent voting on the blockchain.
         </section>
     </main>
     <footer>
