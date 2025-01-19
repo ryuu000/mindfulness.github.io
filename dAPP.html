@@ -38,7 +38,7 @@
             align-items: center;
             margin-top: 50px;
         }
-        button.vote-button {
+        button.vote-button, button.stake-button {
             background-color: #4CAF50;
             color: white;
             padding: 15px 20px;
@@ -52,11 +52,11 @@
             border-radius: 12px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
-        button.vote-button:hover {
+        button.vote-button:hover, button.stake-button:hover {
             background-color: #45a049;
             transform: scale(1.1);
         }
-        button.vote-button:active {
+        button.vote-button:active, button.stake-button:active {
             transform: scale(0.9);
         }
         .result {
@@ -86,6 +86,7 @@
             <form id="voteForm">
                 <button type="button" class="vote-button" data-vote="1">Upvote</button>
                 <button type="button" class="vote-button" data-vote="2">Downvote</button>
+                <button type="button" class="stake-button">Stake Tokens</button>
             </form>
             <p id="voteResult" class="result"></p>
             <script>
@@ -176,6 +177,17 @@
                         await contract.methods.voteForService(accounts[0]).send({ from: accounts[0] });
                         // Update vote results if needed
                     });
+                });
+
+                document.querySelector('.stake-button').addEventListener('click', async function() {
+                    const accounts = await web3.eth.getAccounts();
+                    const amountToStake = prompt("Enter the amount of ETH to stake:");
+                    if (amountToStake && !isNaN(amountToStake) && amountToStake > 0) {
+                        await contract.methods.stakeTokens().send({ from: accounts[0], value: web3.utils.toWei(amountToStake, 'ether') });
+                        alert('Staked successfully!');
+                    } else {
+                        alert('Invalid amount');
+                    }
                 });
 
                 window.addEventListener('load', init);
