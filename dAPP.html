@@ -4,18 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dAPP</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <style>
         body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
         }
         header {
-            background: #1c1c1c;
+            background: #4CAF50;
             padding: 20px;
             text-align: center;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header img {
+            height: 40px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        main {
+            padding-top: 80px;
         }
         .vote-section {
             display: flex;
@@ -46,11 +61,23 @@
         }
         .result {
             margin-top: 20px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        footer {
+            background: #4CAF50;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
     <header>
+        <img src="logo.png" alt="Logo">
         <h1>dAPP</h1>
     </header>
     <main>
@@ -64,9 +91,72 @@
             <script>
                 let web3;
                 let contract;
-                const contractAddress = 'YOUR_SMART_CONTRACT_ADDRESS';
+                const contractAddress = 'YOUR_SMART_CONTRACT_ADDRESS'; // Replace with your contract address
                 const abi = [
-                    // Your contract ABI here
+                    // Replace with your contract ABI
+                    {
+                        "constant": false,
+                        "inputs": [
+                            {
+                                "name": "_name",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_bio",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_profilePicture",
+                                "type": "string"
+                            },
+                            {
+                                "name": "_isWellnessProfessional",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "createProfile",
+                        "outputs": [],
+                        "payable": false,
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "constant": false,
+                        "inputs": [
+                            {
+                                "name": "_isWellnessProfessional",
+                                "type": "bool"
+                            }
+                        ],
+                        "name": "setWellnessProfessionalStatus",
+                        "outputs": [],
+                        "payable": false,
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "constant": false,
+                        "inputs": [],
+                        "name": "stakeTokens",
+                        "outputs": [],
+                        "payable": true,
+                        "stateMutability": "payable",
+                        "type": "function"
+                    },
+                    {
+                        "constant": false,
+                        "inputs": [
+                            {
+                                "name": "wellnessProfessional",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "voteForService",
+                        "outputs": [],
+                        "payable": false,
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    }
                 ];
 
                 async function init() {
@@ -83,10 +173,8 @@
                     button.addEventListener('click', async function() {
                         const voteType = this.getAttribute('data-vote');
                         const accounts = await web3.eth.getAccounts();
-                        await contract.methods.vote(voteType).send({ from: accounts[0] });
-                        const voteCount1 = await contract.methods.getVotes(1).call();
-                        const voteCount2 = await contract.methods.getVotes(2).call();
-                        document.getElementById('voteResult').innerText = `Upvotes: ${voteCount1}, Downvotes: ${voteCount2}`;
+                        await contract.methods.voteForService(accounts[0]).send({ from: accounts[0] });
+                        // Update vote results if needed
                     });
                 });
 
