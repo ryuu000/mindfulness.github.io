@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,10 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Your Name">
     <title>Mindfulness Community</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
         /* Add some basic styles for the sidebar */
         .sidebar {
@@ -20,8 +24,9 @@
             height: 100%;
             background-color: #f4f4f4;
             padding: 20px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
+
         .sidebar-toggle {
             position: absolute;
             top: 20px;
@@ -32,70 +37,175 @@
             padding: 10px;
             cursor: pointer;
         }
-        .google-sign-in {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #4285F4;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            text-decoration: none;
-        }
+
+        .google-sign-in,
         .hivesigner-button {
             display: block;
             margin: 10px 0;
             padding: 10px;
-            background-color: #FF4500;
-            color: #fff;
             text-align: center;
             border-radius: 5px;
             text-decoration: none;
+            color: #fff;
+        }
+
+        .google-sign-in {
+            background-color: #4285F4;
+        }
+
+        .hivesigner-button {
+            background-color: #FF4500;
         }
     </style>
 </head>
+
 <body>
     <header>
         <button id="sidebarToggle" class="sidebar-toggle">☰</button>
-        <nav aria-label="Main Navigation">
-            <ul>
-                <li><a href="index.html" aria-current="page">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
-                <li><a href="dAPP.html">dAPP</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+        <nav class="navbar">
+            <div class="navbar__brand">
+                <img src="./assets/logo.png" alt="logo" class="navbar__logo">
+            </div>
+            <div class="navbar__nav__items">
+                <button class="nav__item button__primary">Join Community</button>
+            </div>
         </nav>
-        <div class="hero">
-            <h1>Welcome to the Mindfulness Community</h1>
-            <p>Join us in our journey towards mindfulness and inner peace. Connect with like-minded individuals and share your experiences.</p>
-            <button class="cta-button" onclick="location.href='about.html'">Get Started</button>
-        </div>
     </header>
+
     <aside id="sidebar" class="sidebar">
         <ul>
             <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li><a href="dAPP.html">dAPP</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
         <a href="#" class="google-sign-in">Sign in with Google</a>
         <a href="#" class="hivesigner-button">Sign in with HiveSigner</a>
     </aside>
-    <main>
-        <div class="social-links" aria-label="Social Media Links">
-            <a href="https://facebook.com" target="_blank" aria-label="Facebook">Facebook</a>
-            <a href="https://twitter.com" target="_blank" aria-label="Twitter">Twitter</a>
-            <a href="https://instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
-        </div>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero__container">
+            <div class="hero__image__container">
+                <img class="hero__image" src="./assets/hero.jpg" alt="hero image">
+                <img src="./assets/svg/heroShape.svg" alt="hero image shape" class="hero__image__shape">
+                <img src="./assets/svg/herobgpattren.svg" alt="hero image shape" class="hero__image__pattern">
+            </div>
+            <div class="hero__description">
+                <h1 class="hero__text">
+                    Join the Mindfulness Community for inner peace.
+                </h1>
+                <button class="button__primary">Join now</button>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video__footage__container">
+            <div class="video__fotage">
+                <iframe src="https://player.vimeo.com/video/323795266" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen class="wellness__video"></iframe>
+            </div>
+            <div class="video__footage__text">
+                <p>
+                    Your wellness journey is guided by experienced professionals without compromising on quality and care.
+                </p>
+            </div>
+        </section>
+
+        <!-- Explore Programs Section -->
+        <section class="explore__programs__container">
+            <h1 class="explore__programs__text">Explore Our Programs</h1>
+            <div class="explore__programs__gradient__bg"></div>
+            <div class="explore__programs__list">
+                <!-- Meditation Card -->
+                <div class="program__card">
+                    <img src="./assets/meditation.jpg" alt="meditation image" class="program__image">
+                    <div class="program__card__description">
+                        <h3 class="program__title">Meditation</h3>
+                        <p class="program__details">Guided sessions, Mindfulness practices<span style="color: red;">+3</span></p>
+                    </div>
+                </div>
+
+                <!-- Yoga Card -->
+                <div class="program__card" id="yoga__card">
+                    <img src="./assets/yoga.jpg" alt="yoga image" class="program__image">
+                    <div class="program__card__description">
+                        <h3 class="program__title">Yoga</h3>
+                        <p class="program__details">Asanas, Pranayama<span style="color: red;">+3</span></p>
+                    </div>
+                </div>
+
+                <!-- Wellness Retreats Card -->
+                <div class="program__card">
+                    <img src="./assets/wellness_retreat.jpg" alt="wellness retreat image" class="program__image">
+                    <div class="program__card__description">
+                        <h3 class="program__title">Wellness Retreats</h3>
+                        <p class="program__details">Relaxation, Detox<span style="color: red;">+3</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="explore__programs__button">
+                <button class="button__primary">View More</button>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section class="community__container">
+            <h1 class="community__description">Join 100s of mindfulness practitioners</h1>
+            <div class="community__flex">
+                <div class="community__flex__row__one">
+                    <div class="community__1">
+                        <img class="community__1__image" src="./assets/community1.jpg" alt="community__1">
+                    </div>
+                    <div class="community__2">
+                        <img class="community__2__image" src="./assets/community2.jpg" alt="community__2">
+                    </div>
+                </div>
+                <div class="community__flex__row__two">
+                    <div class="community__3">
+                        <img class="community__3__image" src="./assets/community3.jpg" alt="community__3">
+                    </div>
+                    <div class="community__4">
+                        <img class="community__4__image" src="./assets/community4.jpg" alt="community__4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Email Subscription Section -->
+        <section class="email__subscribe__container">
+            <div>
+                <h1 class="email__heading">Stay Updated</h1>
+                <div class="email__subscribe__input__field">
+                    <input type="email" name="" id="" class="email__input" placeholder="xyz@email.com">
+                    <button class="button__primary">Get Updates</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote__container">
+            <div class="quote_image_overlay"></div>
+            <h3 class="quote_image_text">
+                When a man's mind is at peace, it makes no difference whether he is rich or poor.
+            </h3>
+        </section>
     </main>
+
     <footer>
-        <p>© 2025 Mindfulness Community | Powered by GitHub</p>
+        <img src="./assets/logo.png" alt="logo">
         <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Contact Info</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Terms and condition</a></li>
+            <li><a href="#">Partnership</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
     </footer>
+
     <script>
-        document.getElementById('sidebarToggle').addEventListener('click', function() {
+        document.getElementById('sidebarToggle').addEventListener('click', function () {
             var sidebar = document.getElementById('sidebar');
             if (sidebar.style.display === 'none' || sidebar.style.display === '') {
                 sidebar.style.display = 'block';
@@ -105,5 +215,6 @@
         });
     </script>
 </body>
-</html>
+
+    </html>
 
