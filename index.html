@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,55 +9,114 @@
     <meta name="author" content="Your Name">
     <title>Mindfulness Community</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Add some basic styles for the sidebar */
-        .sidebar {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #f4f4f4;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* To Box Model */
         }
 
-        .sidebar-toggle {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #333;
+        body {
+            font-family: "Merriweather", sans-serif;
+            background-color: #f0f8ff; /* Light mint color */
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .button__primary {
+            background-image: linear-gradient(to right, #ff512f, #dd2476, #ff512f);
             color: #fff;
+            padding: 12px;
             border: none;
-            padding: 10px;
+            border-radius: 6px;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .google-sign-in,
-        .hivesigner-button {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            text-align: center;
+        .button__primary:hover {
+            background-image: linear-gradient(to right, #dd2476, #ff512f, #dd2476);
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #f9fafc;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero__image {
+            width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero__text {
+            font-size: 30px;
+            color: #1d3557;
+            margin: 20px 0;
+        }
+
+        /* Video Section */
+        .video__footage__container {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video__fotage {
+            position: relative;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Additional Styles */
+        .email__subscribe__container {
+            background-color: #eaf0f1;
+            padding: 20px;
             border-radius: 5px;
-            text-decoration: none;
-            color: #fff;
         }
 
-        .google-sign-in {
-            background-color: #4285F4;
+        .email__input {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
         }
 
-        .hivesigner-button {
-            background-color: #FF4500;
+        .submit-button {
+            background: #38ada9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .submit-button:hover {
+            background: #3c6382;
         }
     </style>
 </head>
-
 <body>
     <header>
         <button id="sidebarToggle" class="sidebar-toggle">☰</button>
@@ -88,7 +146,7 @@
         <!-- Hero Section -->
         <section class="hero__container">
             <div class="hero__image__container">
-                <img class="hero__image" src="./assets/hero.jpg" alt="hero image">
+                <img class="hero__image animated" src="./assets/hero.jpg" alt="hero image">
                 <img src="./assets/svg/heroShape.svg" alt="hero image shape" class="hero__image__shape">
                 <img src="./assets/svg/herobgpattren.svg" alt="hero image shape" class="hero__image__pattern">
             </div>
@@ -103,7 +161,7 @@
         <!-- Video Section -->
         <section class="video__footage__container">
             <div class="video__fotage">
-                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/251192195?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mindfulness"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/251192195?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0"></iframe></div>
             </div>
             <div class="video__footage__text">
                 <p>
@@ -212,8 +270,17 @@
                 sidebar.style.display = 'none';
             }
         });
+
+        window.addEventListener('scroll', function() {
+            var elements = document.querySelectorAll('.animated');
+            elements.forEach(function(element) {
+                var position = element.getBoundingClientRect();
+                if (position.top >= 0 && position.bottom <= window.innerHeight) {
+                    element.classList.add('fadeIn');
+                }
+            });
+        });
     </script>
 </body>
-
-                </html>
+                </html> 
 
