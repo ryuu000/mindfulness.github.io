@@ -17,111 +17,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box; /* To Box Model */
-        }
-
-        body {
-            font-family: "Merriweather", sans-serif;
-            background-color: #f0f8ff; /* Light mint color */
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .button__primary {
-            background-image: linear-gradient(to right, #ff512f, #dd2476, #ff512f);
-            color: #fff;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .button__primary:hover {
-            background-image: linear-gradient(to right, #dd2476, #ff512f, #dd2476);
-        }
-
-        .container {
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            background-color: #f9fafc;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        .hero__image {
-            width: 100%;
-            border-radius: 6px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .hero__text {
-            font-size: 30px;
-            color: #1d3557;
-            margin: 20px 0;
-        }
-
-        /* Video Section */
-        .video__footage__container {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video__fotage {
-            position: relative;
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .animated {
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        /* Additional Styles */
-        .email__subscribe__container {
-            background-color: #eaf0f1;
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        .email__input {
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .submit-button {
-            background: #38ada9;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .submit-button:hover {
-            background: #3c6382;
-        }
-    </style>
+    <!-- Grape.js styles -->
+    <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+    <!-- React bundled JavaScript -->
+    <script defer src="dist/bundle.js"></script>
 </head>
 <body>
     <header>
@@ -148,115 +47,10 @@
         <a href="#" class="hivesigner-button">Sign in with HiveSigner</a>
     </aside>
 
-    <main class="container">
-        <!-- Hero Section -->
-        <section class="hero__container">
-            <div class="hero__image__container">
-                <img class="hero__image animated" src="./assets/hero.jpg" alt="Hero Image" loading="lazy">
-                <img src="./assets/svg/heroShape.svg" alt="Hero Image Shape" class="hero__image__shape" loading="lazy">
-                <img src="./assets/svg/herobgpattren.svg" alt="Hero Image Pattern" class="hero__image__pattern" loading="lazy">
-            </div>
-            <div class="hero__description">
-                <h1 class="hero__text">
-                    Join the Mindfulness Community for inner peace.
-                </h1>
-                <button class="button__primary">Join now</button>
-            </div>
-        </section>
+    <div id="root"></div> <!-- React will render here -->
 
-        <!-- Video Section -->
-        <section class="video__footage__container">
-            <div class="video__fotage">
-                <div style="padding:56.25% 0 0 0;position:relative;">
-                    <iframe src="https://player.vimeo.com/video/251192195?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" loading="lazy"></iframe>
-                </div>
-            </div>
-            <div class="video__footage__text">
-                <p>
-                    Your wellness journey is guided by experienced professionals without compromising on quality and care.
-                </p>
-            </div>
-        </section>
-
-        <!-- Explore Programs Section -->
-        <section class="explore__programs__container">
-            <h1 class="explore__programs__text">Explore Our Programs</h1>
-            <div class="explore__programs__gradient__bg"></div>
-            <div class="explore__programs__list">
-                <!-- Meditation Card -->
-                <div class="program__card">
-                    <img src="./assets/meditation.jpg" alt="Meditation Image" class="program__image" loading="lazy">
-                    <div class="program__card__description">
-                        <h3 class="program__title">Meditation</h3>
-                        <p class="program__details">Guided sessions, Mindfulness practices<span style="color: red;">+3</span></p>
-                    </div>
-                </div>
-
-                <!-- Yoga Card -->
-                <div class="program__card" id="yoga__card">
-                    <img src="./assets/yoga.jpg" alt="Yoga Image" class="program__image" loading="lazy">
-                    <div class="program__card__description">
-                        <h3 class="program__title">Yoga</h3>
-                        <p class="program__details">Asanas, Pranayama<span style="color: red;">+3</span></p>
-                    </div>
-                </div>
-
-                <!-- Wellness Retreats Card -->
-                <div class="program__card">
-                    <img src="./assets/wellness_retreat.jpg" alt="Wellness Retreat Image" class="program__image" loading="lazy">
-                    <div class="program__card__description">
-                        <h3 class="program__title">Wellness Retreats</h3>
-                        <p class="program__details">Relaxation, Detox<span style="color: red;">+3</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="explore__programs__button">
-                <button class="button__primary">View More</button>
-            </div>
-        </section>
-
-        <!-- Community Section -->
-        <section class="community__container">
-            <h1 class="community__description">Join 100s of mindfulness practitioners</h1>
-            <div class="community__flex">
-                <div class="community__flex__row__one">
-                    <div class="community__1">
-                        <img class="community__1__image" src="./assets/community1.jpg" alt="Community Image 1" loading="lazy">
-                    </div>
-                    <div class="community__2">
-                        <img class="community__2__image" src="./assets/community2.jpg" alt="Community Image 2" loading="lazy">
-                    </div>
-                </div>
-                <div class="community__flex__row__two">
-                    <div class="community__3">
-                        <img class="community__3__image" src="./assets/community3.jpg" alt="Community Image 3" loading="lazy">
-                    </div>
-                    <div class="community__4">
-                        <img class="community__4__image" src="./assets/community4.jpg" alt="Community Image 4" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Email Subscription Section -->
-        <section class="email__subscribe__container">
-            <div>
-                <h1 class="email__heading">Stay Updated</h1>
-                <div class="email__subscribe__input__field">
-                    <input type="email" name="" id="" class="email__input" placeholder="xyz@email.com">
-                    <button class="button__primary">Get Updates</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quote Section -->
-        <section class="quote__container">
-            <div class="quote_image_overlay"></div>
-            <h3 class="quote_image_text">
-                When a man's mind is at peace, it makes no difference whether he is rich or poor.
-            </h3>
-        </section>
-    </main>
+    <!-- Grape.js container -->
+    <div id="gjs"></div>
 
     <footer>
         <img src="./assets/logo.png" alt="Mindfulness Community Logo" loading="lazy">
@@ -268,26 +62,8 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </footer>
-
-    <script defer>
-        document.getElementById('sidebarToggle').addEventListener('click', function () {
-            var sidebar = document.getElementById('sidebar');
-            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
-                sidebar.style.display = 'block';
-            } else {
-                sidebar.style.display = 'none';
-            }
-        });
-
-        window.addEventListener('scroll', function() {
-            var elements = document.querySelectorAll('.animated');
-            elements.forEach(function(element) {
-                var position = element.getBoundingClientRect();
-                if (position.top >= 0 && position.bottom <= window.innerHeight) {
-                    element.classList.add('fadeIn');
-                }
-            });
-        });
-    </script>
+    
+    <!-- Grape.js script -->
+    <script src="https://unpkg.com/grapesjs"></script>
 </body>
-    </html>
+</html>
