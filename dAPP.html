@@ -34,12 +34,6 @@
             max-width: 800px;
             margin: auto;
         }
-        .vote-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 50px;
-        }
         .wellness-professionals {
             margin: 20px 0;
             padding: 20px;
@@ -93,22 +87,13 @@
         <h1>Mindfulness dAPP</h1>
     </header>
     <main>
-        <section class="vote-section">
-            <h2>Sample Voting dApp</h2>
-            <form id="voteForm">
-                <button type="button" class="vote-button" data-vote="1">Upvote</button>
-                <button type="button" class="vote-button" data-vote="2">Downvote</button>
-                <button type="button" class="stake-button">Stake Tokens</button>
-            </form>
-            <p id="voteResult" class="result"></p>
-        </section>
         <section class="wellness-professionals">
             <h3>Wellness Professionals</h3>
             <ul id="professionalList"></ul>
         </section>
         <section>
             <h2>About this dApp</h2>
-            <p>This is a sample voting dApp frontend. In future updates, this dApp will be expanded with smart contract integration, allowing for decentralized and transparent voting for wellness professionals and life coaches.</p>
+            <p>This is a sample voting dApp frontend. In future updates, this dApp will be expanded with smart contract integration, allowing for decentralized and transparent voting for wellness professionals.</p>
         </section>
     </main>
     <footer>
@@ -205,30 +190,26 @@
             const professionalList = document.getElementById('professionalList');
             professionals.forEach(professional => {
                 const li = document.createElement('li');
-                li.textContent = professional.name;
+                li.innerHTML = `
+                    <div>
+                        <h4>${professional.name}</h4>
+                        <button type="button" class="vote-button" data-vote="1" data-address="${professional.address}">Upvote</button>
+                        <button type="button" class="vote-button" data-vote="2" data-address="${professional.address}">Downvote</button>
+                    </div>
+                `;
                 professionalList.appendChild(li);
             });
-        }
 
-        document.querySelectorAll('.vote-button').forEach(button => {
-            button.addEventListener('click', async function() {
-                const voteType = this.getAttribute('data-vote');
-                const accounts = await web3.eth.getAccounts();
-                await contract.methods.voteForService(accounts[0]).send({ from: accounts[0] });
-                // Update vote results if needed
+            document.querySelectorAll('.vote-button').forEach(button => {
+                button.addEventListener('click', async function () {
+                    const voteType = this.getAttribute('data-vote');
+                    const professionalAddress = this.getAttribute('data-address');
+                    const accounts = await web3.eth.getAccounts();
+                    await contract.methods.voteForService(professionalAddress).send({ from: accounts[0] });
+                    alert('Vote submitted!');
+                });
             });
-        });
-
-        document.querySelector('.stake-button').addEventListener('click', async function() {
-            const accounts = await web3.eth.getAccounts();
-            const amountToStake = prompt("Enter the amount of ETH to stake:");
-            if (amountToStake && !isNaN(amountToStake) && amountToStake > 0) {
-                await contract.methods.stakeTokens().send({ from: accounts[0], value: web3.utils.toWei(amountToStake, 'ether') });
-                alert('Staked successfully!');
-            } else {
-                alert('Invalid amount');
-            }
-        });
+        }
 
         window.addEventListener('load', init);
     </script>
