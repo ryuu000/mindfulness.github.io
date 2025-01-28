@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mindfulness dAPP</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <style>
         body {
             background-color: #ffffff;
@@ -100,89 +99,7 @@
         <p>© 2025 Mindfulness Community</p>
     </footer>
     <script>
-        let web3;
-        let contract;
-        const contractAddress = 'YOUR_SMART_CONTRACT_ADDRESS'; // Replace with your contract address
-        const abi = [
-            // Replace with your contract ABI
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_name",
-                        "type": "string"
-                    },
-                    {
-                        "name": "_bio",
-                        "type": "string"
-                    },
-                    {
-                        "name": "_profilePicture",
-                        "type": "string"
-                    },
-                    {
-                        "name": "_isWellnessProfessional",
-                        "type": "bool"
-                    }
-                ],
-                "name": "createProfile",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_isWellnessProfessional",
-                        "type": "bool"
-                    }
-                ],
-                "name": "setWellnessProfessionalStatus",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [],
-                "name": "stakeTokens",
-                "outputs": [],
-                "payable": true,
-                "stateMutability": "payable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "wellnessProfessional",
-                        "type": "address"
-                    }
-                ],
-                "name": "voteForService",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            }
-        ];
-
-        async function init() {
-            if (window.ethereum) {
-                web3 = new Web3(window.ethereum);
-                await window.ethereum.request({ method: 'eth_requestAccounts' });
-                contract = new web3.eth.Contract(abi, contractAddress);
-                loadWellnessProfessionals();
-            } else {
-                alert('Please install MetaMask!');
-            }
-        }
-
-        async function loadWellnessProfessionals() {
-            // Fetch the list of wellness professionals and display them
+        document.addEventListener('DOMContentLoaded', function() {
             const professionals = [
                 { name: 'Dr. John Doe', address: '0x123...' },
                 { name: 'Jane Smith', address: '0x456...' }
@@ -199,19 +116,7 @@
                 `;
                 professionalList.appendChild(li);
             });
-
-            document.querySelectorAll('.vote-button').forEach(button => {
-                button.addEventListener('click', async function () {
-                    const voteType = this.getAttribute('data-vote');
-                    const professionalAddress = this.getAttribute('data-address');
-                    const accounts = await web3.eth.getAccounts();
-                    await contract.methods.voteForService(professionalAddress).send({ from: accounts[0] });
-                    alert('Vote submitted!');
-                });
-            });
-        }
-
-        window.addEventListener('load', init);
+        });
     </script>
 </body>
 </html>
