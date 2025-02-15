@@ -33,6 +33,13 @@
             max-width: 800px;
             margin: auto;
         }
+        .app-container {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
         .wellness-professionals {
             margin: 20px 0;
             padding: 20px;
@@ -78,7 +85,6 @@
             width: 100%;
             bottom: 0;
         }
-
         /* Button 34 Styles */
         .btn-34,
         .btn-34 *,
@@ -87,7 +93,6 @@
           border: 0 solid;
           box-sizing: border-box;
         }
-
         .btn-34 {
           -webkit-tap-highlight-color: transparent;
           -webkit-appearance: button;
@@ -113,37 +118,29 @@
           padding: 0.8rem 3rem;
           position: relative;
         }
-
         .btn-34:disabled {
           cursor: default;
         }
-
         .btn-34:focus {
           outline: 2px solid #fff;
         }
-
         .btn-34:-moz-focusring {
           outline: auto;
         }
-
         .btn-34 svg {
           display: block;
           vertical-align: middle;
         }
-
         .btn-34 [hidden] {
           display: none;
         }
-
         .btn-34:hover {
           transform: scale(1.1);
         }
-
         .btn-34 span {
           font-weight: 900;
           mix-blend-mode: difference;
         }
-
         .btn-34:before {
           aspect-ratio: 1;
           background: #fff;
@@ -156,7 +153,6 @@
           transition: width 0.2s;
           width: 0;
         }
-
         .btn-34:hover:before {
           width: 100%;
         }
@@ -168,18 +164,20 @@
         <h1>Mindfulness dAPP</h1>
     </header>
     <main>
-        <section class="wellness-professionals">
-            <h3>Wellness Professionals</h3>
-            <ul id="professionalList"></ul>
-        </section>
-        <section>
-            <h2>About this dApp</h2>
-            <p>This is a sample voting dApp frontend. In future updates, this dApp will be expanded with smart contract integration, allowing for decentralized and transparent voting for wellness professionals.</p>
-        </section>
-        <section>
-            <h2>Special Button</h2>
-            <button id="hivesigner-login" class="btn-34"><span>Special Button</span></button>
-        </section>
+        <div class="app-container">
+            <section class="wellness-professionals">
+                <h3>Wellness Professionals</h3>
+                <ul id="professionalList"></ul>
+            </section>
+            <section>
+                <h2>About this dApp</h2>
+                <p>This is a sample voting dApp frontend. In future updates, this dApp will be expanded with smart contract integration, allowing for decentralized and transparent voting for wellness professionals.</p>
+            </section>
+            <section>
+                <h2>Special Button</h2>
+                <button id="hivesigner-login" class="btn-34"><span>Special Button</span></button>
+            </section>
+        </div>
     </main>
     <footer>
         <p>© 2025 Mindfulness Community</p>
